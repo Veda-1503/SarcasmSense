@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --bg-base: #0d0f12;
+  --bg-surface: #13161b;
+  --bg-card: #191d24;
+  --bg-elevated: #1e232b;
+
+  --border: #272c36;
+  --border-light: #2e3440;
+
+  --text-primary: #e8eaed;
+  --text-secondary: #8b92a0;
+  --text-muted: #555d6e;
+
+  --accent: #5b8dee;
+  --accent-dim: rgba(91, 141, 238, 0.12);
+
+  --positive: #3ecf72;
+  --positive-dim: rgba(62, 207, 114, 0.1);
+  --neutral: #f0b429;
+  --neutral-dim: rgba(240, 180, 41, 0.1);
+  --negative: #f56565;
+  --negative-dim: rgba(245, 101, 101, 0.1);
+  --sarcasm: #ff6b6b;
+  --sarcasm-dim: rgba(255, 107, 107, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3d4558; }
+
+/* Sentiment chip */
+.chip-positive { background: var(--positive-dim); color: var(--positive); border: 1px solid rgba(62,207,114,0.25); }
+.chip-neutral { background: var(--neutral-dim); color: var(--neutral); border: 1px solid rgba(240,180,41,0.25); }
+.chip-negative { background: var(--negative-dim); color: var(--negative); border: 1px solid rgba(245,101,101,0.25); }
+.chip-sarcasm { background: var(--sarcasm-dim); color: var(--sarcasm); border: 1px solid rgba(255,107,107,0.2); }
+.chip-no-sarcasm { background: rgba(62,207,114,0.06); color: #6ad49e; border: 1px solid rgba(62,207,114,0.15); }
+
+/* Card */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.card-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-slow { animation: pulse-slow 1.8s ease-in-out infinite; }
+
+/* Confidence bar */
+.conf-bar-track {
+  background: var(--border);
+  border-radius: 99px;
+  height: 4px;
+  width: 100%;
+}
+.conf-bar-fill {
+  border-radius: 99px;
+  height: 4px;
+  transition: width 0.6s ease;
+}
